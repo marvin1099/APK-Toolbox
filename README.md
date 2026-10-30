@@ -244,7 +244,7 @@ Clones you build yourself are signed with this installation's private key (or an
 ./gradlew assembleRelease
 ```
 
-This makes one APK for each kind of processor and a universal one that has them all, in `app/build/outputs/apk/release/`. A release build is shrunk and obfuscated with R8. It is signed if a `keystore.properties` file (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`) is present in the project root, and left unsigned otherwise.
+This makes one APK for each kind of processor and a universal one that has them all, in `app/build/outputs/apk/release/`. A release build is shrunk and obfuscated with R8. It is signed if a `keystore.properties` file (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`) is present in the project root, or if the corresponding `APK_TOOLBOX_RELEASE_STORE_FILE`, `APK_TOOLBOX_RELEASE_STORE_PASSWORD`, `APK_TOOLBOX_RELEASE_KEY_ALIAS`, and `APK_TOOLBOX_RELEASE_KEY_PASSWORD` environment variables are set; otherwise it is left unsigned. Keep the release keystore and its passwords out of Git, and back them up securely. Fork releases use a separate signing certificate and cannot update upstream-signed builds.
 
 Telegram channels need the app's own API id and hash from [my.telegram.org](https://my.telegram.org). Copy `telegram.properties.example` to `telegram.properties` and fill them in; the file stays out of git. Without it the app builds and the Telegram source says it is not available.
 

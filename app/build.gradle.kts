@@ -12,6 +12,21 @@ val keystoreProperties = Properties().apply {
         keystorePropertiesFile.inputStream().use { load(it) }
     }
 }
+fun releaseSigningValue(property: String, environment: String): String? =
+    System.getenv(environment)?.takeIf(String::isNotBlank) ?: keystoreProperties.getProperty(property)?.takeIf(String::isNotBlank)
+
+val releaseStoreFile = releaseSigningValue("storeFile", "APK_TOOLBOX_RELEASE_STORE_FILE")
+val releaseStorePassword = releaseSigningValue("storePassword", "APK_TOOLBOX_RELEASE_STORE_PASSWORD")
+val releaseKeyAlias = releaseSigningValue("keyAlias", "APK_TOOLBOX_RELEASE_KEY_ALIAS")
+val releaseKeyPassword = releaseSigningValue("keyPassword", "APK_TOOLBOX_RELEASE_KEY_PASSWORD")
+val hasReleaseSigningConfig = listOf(releaseStoreFile, releaseStorePassword, releaseKeyAlias, releaseKeyPassword).all { it != null }
+val hasAnyReleaseSigningInput = keystorePropertiesFile.exists() || listOf(
+    "APK_TOOLBOX_RELEASE_STORE_FILE", "APK_TOOLBOX_RELEASE_STORE_PASSWORD",
+    "APK_TOOLBOX_RELEASE_KEY_ALIAS", "APK_TOOLBOX_RELEASE_KEY_PASSWORD",
+).any { !System.getenv(it).isNullOrBlank() }
+check(!hasAnyReleaseSigningInput || hasReleaseSigningConfig) {
+    "Release signing requires storeFile, storePassword, keyAlias, and keyPassword (properties or APK_TOOLBOX_RELEASE_* environment variables)."
+}
 
 // The app's own Telegram API id and hash (my.telegram.org). Kept out of git like the release
 // key; without the file the app still builds, and Telegram channels are simply not available.
@@ -52,12 +67,12 @@ android {
     }
 
     signingConfigs {
-        if (keystorePropertiesFile.exists()) {
+        if (hasReleaseSigningConfig) {
             create("release") {
-                storeFile = file(keystoreProperties.getProperty("storeFile"))
-                storePassword = keystoreProperties.getProperty("storePassword")
-                keyAlias = keystoreProperties.getProperty("keyAlias")
-                keyPassword = keystoreProperties.getProperty("keyPassword")
+                storeFile = file(checkNotNull(releaseStoreFile))
+                storePassword = checkNotNull(releaseStorePassword)
+                keyAlias = checkNotNull(releaseKeyAlias)
+                keyPassword = checkNotNull(releaseKeyPassword)
             }
         }
     }
@@ -67,7 +82,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            if (keystorePropertiesFile.exists()) {
+            if (hasReleaseSigningConfig) {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
