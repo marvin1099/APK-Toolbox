@@ -43,7 +43,7 @@ Two things it does that are hard to find elsewhere:
 
 ## Download
 
-Get the latest build from [this fork's Releases](https://github.com/marvin1099/APK-Toolbox/releases). Assets are labeled **signed** (fork certificate; installable and updatable only with that same key), **unsigned** (not directly installable), or **debug** (debug certificate; for testing only). `APK-Toolbox-<version>-universal.apk` installs on anything; the others are smaller, one for each kind of processor (`arm64-v8a` for nearly every phone of the last years). For upstream builds, see [bl3xand/APK-Toolbox Releases](https://github.com/bl3xand/APK-Toolbox/releases).
+Get the latest build from this fork's [GitHub Releases](https://github.com/marvin1099/APK-Toolbox/releases) or [Codeberg Releases](https://codeberg.org/marvin1099/APK-Toolbox/releases). Assets are labeled **signed** (fork certificate; installable and updatable only with that same key), **unsigned** (not directly installable), or **debug** (debug certificate; for testing only). `APK-Toolbox-<version>-universal.apk` installs on anything; the others are smaller, one for each kind of processor (`arm64-v8a` for nearly every phone of the last years). For upstream builds, see [bl3xand/APK-Toolbox Releases](https://github.com/bl3xand/APK-Toolbox/releases).
 
 <details>
 <summary><strong>Screenshots</strong></summary>
