@@ -9,12 +9,18 @@ Track, clone, install and merge Android apps — right on the phone, no root.
 <img width="200" alt="Clones" src="docs/screenshots/clones.jpg">
 <img width="200" alt="Settings" src="docs/screenshots/settings.jpg">
 
-[![Stars](https://img.shields.io/github/stars/bl3xand/APK-Toolbox?style=for-the-badge)](https://github.com/bl3xand/APK-Toolbox/stargazers)
-[![Downloads](https://img.shields.io/github/downloads/bl3xand/APK-Toolbox/total?style=for-the-badge)](https://github.com/bl3xand/APK-Toolbox/releases)
-[![Latest Stable](https://img.shields.io/github/v/release/bl3xand/APK-Toolbox?style=for-the-badge&label=Latest%20Stable)](https://github.com/bl3xand/APK-Toolbox/releases/latest)
-[![Issues](https://img.shields.io/github/issues/bl3xand/APK-Toolbox?style=for-the-badge)](https://github.com/bl3xand/APK-Toolbox/issues)
+[![Stars](https://img.shields.io/github/stars/marvin1099/APK-Toolbox?style=for-the-badge)](https://github.com/marvin1099/APK-Toolbox/stargazers)
+[![Downloads](https://img.shields.io/github/downloads/marvin1099/APK-Toolbox/total?style=for-the-badge)](https://github.com/marvin1099/APK-Toolbox/releases)
+[![Latest Stable](https://img.shields.io/github/v/release/marvin1099/APK-Toolbox?style=for-the-badge&label=Latest%20Stable)](https://github.com/marvin1099/APK-Toolbox/releases/latest)
+[![Issues](https://img.shields.io/github/issues/marvin1099/APK-Toolbox?style=for-the-badge)](https://github.com/marvin1099/APK-Toolbox/issues)
 
 </div>
+
+## This fork
+
+This is an independently maintained downstream fork of [APK-Toolbox by bl3xand](https://github.com/bl3xand/APK-Toolbox), mirrored at [Codeberg](https://codeberg.org/marvin1099/APK-Toolbox). It keeps the APK Toolbox name, application ID, version lineage, and GPL-3.0 license while adding per-install clone signing keys, configurable background checks, and conditional PackageInstaller update ownership.
+
+Fork builds are not automatically compatible with APKs signed by upstream. Android will reject an in-place app update if the signing certificates differ. The current debug APK uses a debug certificate, and release builds remain unsigned until a release keystore is configured. Do not remove an installed APK-Toolbox copy to work around a signature mismatch without first considering its settings and clone-signing key; losing that key can prevent clone updates.
 
 ## About
 
@@ -37,7 +43,7 @@ Two things it does that are hard to find elsewhere:
 
 ## Download
 
-Get the latest build from [Releases](https://github.com/bl3xand/APK-Toolbox/releases). `APK-Toolbox-<version>-universal.apk` installs on anything; the others are smaller, one for each kind of processor (`arm64-v8a` for nearly every phone of the last years).
+Get the latest build from [this fork's Releases](https://github.com/marvin1099/APK-Toolbox/releases). `APK-Toolbox-<version>-universal.apk` installs on anything; the others are smaller, one for each kind of processor (`arm64-v8a` for nearly every phone of the last years). For upstream builds, see [bl3xand/APK-Toolbox Releases](https://github.com/bl3xand/APK-Toolbox/releases).
 
 ## Screenshots
 
