@@ -45,7 +45,8 @@ Two things it does that are hard to find elsewhere:
 
 Get the latest build from [this fork's Releases](https://github.com/marvin1099/APK-Toolbox/releases). `APK-Toolbox-<version>-universal.apk` installs on anything; the others are smaller, one for each kind of processor (`arm64-v8a` for nearly every phone of the last years). For upstream builds, see [bl3xand/APK-Toolbox Releases](https://github.com/bl3xand/APK-Toolbox/releases).
 
-## Screenshots
+<details>
+<summary><strong>Screenshots</strong></summary>
 
 <p align="center">
   <img src="docs/screenshots/source-telegram.jpg" width="24%" alt="An app tracked from a Telegram channel" />
@@ -71,6 +72,8 @@ Get the latest build from [this fork's Releases](https://github.com/marvin1099/A
   <img src="docs/screenshots/merge.jpg" width="24%" alt="Merging splits" />
   <img src="docs/screenshots/sources.jpg" width="24%" alt="Sources" />
 </p>
+
+</details>
 
 ## Requirements
 
